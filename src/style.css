@@ -1,0 +1,262 @@
+body {
+    margin: 0;
+    font-family: Nunito-Bold;
+}
+
+/* Import Font  */
+@font-face {
+    font-family: Nunito-Regular;
+    src: url(../fonts/Nunito/static/Nunito-Regular.ttf);
+}
+
+@font-face {
+    font-family: Nunito-Bold;
+    src: url(../fonts/Nunito/static/Nunito-Bold.ttf);
+}
+
+/* Styling */
+
+.main-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.shopping-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.shopping-wrapper-below {
+    float: bottom;
+    box-shadow:-0.5px 5px 5px #bbb;
+}
+
+.shopping-wrapper-below-content {
+    margin-left: 100px;
+}
+
+h2 {
+    margin: 0;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    width: auto;
+}
+
+.rating-star {
+    width: 30px;
+}
+
+.location {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0; 
+    color: grey;
+}
+
+.location-icon {
+    width: 20px;
+}
+
+.button-row {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    gap: 20px;
+    padding: 20px 0px;
+}
+
+.btn-menu {
+    font-family: Nunito-Regular;
+    font-size: 16px;
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+    cursor: pointer;
+    color: black;
+    padding: 10px 20px;
+}
+
+.btn-menu:active {
+    background-color: black;
+    color: white;
+}
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    font-size: 24px;
+    background-color: white;
+}
+
+.logo {
+    width: 200px;
+}
+
+.icon-container img {
+    width: 50px;
+}
+
+.cover-container {
+    width: 100%;
+}
+
+.cover-picture {
+    object-fit: cover;
+    height: 300px;
+    width: 100%;
+}
+
+.logo-pizzeria img {
+    width: 100px;
+    border-radius: 20px;
+}
+
+.logo-pizzeria {
+    margin-left: 100px;
+    margin-top: -50px;
+}
+
+/* Cart Section  */
+
+.cart-wrapper {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    float: left;
+    box-shadow:-0.5px 5px 5px #bbb;
+}
+
+.delivery-section {
+    display: flex;
+    flex-direction: row;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #EFEDE9;
+    border-radius: 30px;
+    padding: 2px;
+
+}
+
+.button-delivery {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0.5px 0.5px 1px grey;
+    margin-right: 10px;
+}
+
+.text-button-delivery {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-styling {
+    padding: 0;
+    margin: 0px 10px;
+    font-size: 12px;
+
+}
+
+
+.icon {
+    width: 30px;
+}
+
+.icon-button-delivery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-pickUp {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0.5px 0.5px 1px grey;
+    display: flex;
+    flex-direction: row;
+}
+
+.shopping-cart {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.icon-cart {
+    width: 80px;
+    filter: contrast(5%) brightness(160%);
+}
+
+.descriptionCart {
+    font-family:Arial, Helvetica, sans-serif;
+    color: grey;
+    font-size: 14px;
+    margin: 0;
+}
+
+.dish-wrapper {
+    padding: 50px 100px;
+}
+
+.content-shoppingCart {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #b9b9b989;
+    border-radius: 30px;
+    padding: 20px 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.content-shoppingCart p {
+    font-weight: thin;
+    margin: 0;
+}
+
+.content-shoppingCart:hover {
+    background-color: rgb(236, 235, 235);
+}
+
+.addBtn {
+    width: 20px;
+    cursor: pointer;
+}
+

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <script src="./src/script.js"></script>
+    <title>Lieferando</title>
+  </head>
+  <body onload="loadBody()">
+    <div class="main-wrapper">
+      <div class="header">
+        <div class="logo-container">
+          <img
+            class="logo"
+            src="./img/genussGondel-logo.png"
+            alt="Logo GenussGondel"
+          />
+        </div>
+        <div class="text-container"><p>Speisekarte</p></div>
+        <div class="icon-container">
+          <img src="./img/icons/flag.svg" alt="German Flag" />
+          <img src="./img/icons/menu.svg" alt="Menu Icon" />
+        </div>
+      </div>
+      <div class="content-wrapper">
+        <div class="shopping-wrapper">
+          <img class="cover-picture" src="./img/img/pizza-cover.jpg" alt="" />
+          <div class="logo-pizzeria">
+            <img
+              src="./img/hogwarts-pizzeria-logo.jpg"
+              alt="Hogwarts Pizzeria Logo"
+            />
+          </div>
+          <div class="shopping-wrapper-below">
+            <div class="shopping-wrapper-below-content">
+              <h2>Hogwarts Pizzeria 🍕</h2>
+              <div class="rating">
+                <img
+                  class="rating-star"
+                  src="./img/icons/star-filled.svg"
+                  alt="Rating Start orange"
+                />
+                <p>
+                  <u><b>4.8</b> (200)</u>
+                </p>
+              </div>
+              <div class="location">
+                <img
+                  class="location-icon"
+                  src="./img/icons/info.svg"
+                  alt="Rating Start orange"
+                />
+                <p>Friedrichstraße 76, Niedersachsen</p>
+              </div>
+              <div class="button-row">
+                <button id="pizza" class="btn-menu">Pizza</button>
+                <button id="pasta" class="btn-menu">Pasta</button>
+                <button id="dessert" class="btn-menu">Dessert</button>
+              </div>
+            </div>
+          </div>
+          <div class="dish-wrapper">
+            <div class="dishContentAll">
+              <h2 id="selectCategory">Pizza</h2>
+              <section id="sectionPizza">
+                <div id="dishContent"></div>
+              </section>
+              <h2 id="selectCategory">Pasta</h2>
+              <section id="sectionPizza">
+                <div id="dishContent"></div>
+              </section>
+              <h2 id="selectCategory">Dessert</h2>
+              <section id="sectionPizza">
+                <div id="dishContent"></div>
+              </section>
+            </div>
+          </div>
+        </div>
+        <div class="cart-wrapper">
+          <div class="cart-headline">
+            <h2>Warenkorb</h2>
+          </div>
+          <div class="delivery-section">
+            <!-- Buttons  -->
+            <div class="button-container">
+              <!-- Delivery Section  -->
+              <div class="button-delivery">
+                <div class="icon-button-delivery">
+                  <img
+                    class="icon"
+                    src="./img/icons/bicycle.svg"
+                    alt="Bicycle Icon"
+                  />
+                </div>
+                <div class="text-button-delivery">
+                  <p class="p-styling">Lieferung</p>
+                  <p class="p-styling">15-40 min</p>
+                </div>
+              </div>
+              <!-- PickUp Section  -->
+              <div class="button-pickUp">
+                <div class="icon-button-delivery">
+                  <img
+                    class="icon"
+                    src="./img/icons/bag.svg"
+                    alt="Bicycle Icon"
+                  />
+                </div>
+                <div class="text-button-delivery">
+                  <p class="p-styling">Abholung</p>
+                  <p class="p-styling">15 min</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="shoppingCart" class="shopping-cart"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
