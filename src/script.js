@@ -25,6 +25,7 @@ function loadBody() {
     renderShoppingCart();
     cartTemplate();
     renderPizza();
+    renderPasta();
 }
 
 
@@ -61,14 +62,14 @@ function renderPasta() {
     for (let i = 0; i < pastas.length; i++) {
         const pasta = pastas[i];
         categoryPasta.innerHTML += `
-        <div class="content-shoppingCart" id="shoppingDish">
+        <div class="content-shoppingCart">
           <div class="ingredients-container">
             <h3>${pasta['name']}</h3>
             <p>${pasta['ingredients']}</p>
             <h3>${pasta['price']}</h3>
           </div>
           <div class="add-container">
-            <img src="./img/icons/plus.svg" alt="Add Button" onclick="addDish()" class="addBtn" id="addButton">
+            <img src="./img/icons/plus.svg" alt="Add Button" onclick="addDish()" class="addBtn">
           </div>
         </div>
       `;
