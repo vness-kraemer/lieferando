@@ -1,8 +1,24 @@
 body {
     margin: 0;
     font-family: Nunito-Bold;
+
 }
 
+* {
+    scroll-behavior: smooth;
+}
+
+h1 {
+    font-size: 14px;
+}
+
+h2 {
+    font-size: 18px;
+}
+
+h3 {
+    font-size: 16px;
+}
 /* Import Font  */
 @font-face {
     font-family: Nunito-Regular;
@@ -140,10 +156,14 @@ h2 {
     display: flex;
     height: 100vh;
     flex-direction: column;
+    position: sticky;
+    top: 70px;
+    right: 0;
     width: 30%;
     align-items: center;
     float: left;
     box-shadow:-0.5px 5px 5px #bbb;
+    padding: 0;
 }
 
 .delivery-section {
@@ -168,6 +188,11 @@ h2 {
     border-radius: 30px;
     box-shadow: 0.5px 0.5px 1px grey;
     margin-right: 10px;
+    cursor: pointer;
+}
+
+.button-delivery:hover {
+    background-color:rgb(249, 244, 244);
 }
 
 .text-button-delivery {
@@ -202,16 +227,30 @@ h2 {
     box-shadow: 0.5px 0.5px 1px grey;
     display: flex;
     flex-direction: row;
+    cursor: pointer;
+}
+
+.button-pickUp:hover {
+    background-color:rgb(249, 244, 244);
+}
+
+.button-pay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .shopping-cart {
-    padding: 20px;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 .cart-section {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -260,3 +299,91 @@ h2 {
     cursor: pointer;
 }
 
+.shoppingCartFilledBasket {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    gap: 2em;
+}
+
+
+.filledBasketItem {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filledBasketCounter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.filled-basket {
+    width: 100%;
+    
+}
+
+.show-basket {
+    width: 100%;
+}
+
+.itemCount {
+    background-color: #D2D2D2;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    margin: 0px 10px;
+}
+
+#calculation-container {
+    width: 100%;
+}
+
+.calculationContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    
+}
+
+.calculationContainer p {
+    margin: 0px;
+    font-weight: 100;
+}
+
+.priceList {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btnPay {
+    display: flex;
+    flex-direction: column;
+    background-color: #FC914D;
+    color: white;
+    width: 80%;
+    height: 40px;
+    border: 0px;
+    border-radius: 30px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-flex {
+    display: flex;
+}

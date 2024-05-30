@@ -54,23 +54,25 @@
                 <p>Friedrichstraße 76, Niedersachsen</p>
               </div>
               <div class="button-row">
-                <button id="pizza" class="btn-menu">Pizza</button>
-                <button id="pasta" class="btn-menu">Pasta</button>
-                <button id="dessert" class="btn-menu">Dessert</button>
+                <a href="#pizza-anchor" id="pizza" class="btn-menu">Pizza</a>
+                <a href="#pasta-anchor" id="pasta" class="btn-menu">Pasta</a>
+                <a href="#dessert-anchor" id="dessert" class="btn-menu"
+                  >Dessert</a
+                >
               </div>
             </div>
           </div>
           <div class="dish-wrapper">
             <div class="dishContentAll">
-              <h2 id="selectCategory">Pizza</h2>
+              <h2 id="pizza-anchor">Pizza</h2>
               <section id="sectionPizza">
                 <div id="dishContent"></div>
               </section>
-              <h2 id="selectCategory">Pasta</h2>
+              <h2 id="pasta-anchor">Pasta</h2>
               <section id="sectionPasta">
                 <div id="dishContent"></div>
               </section>
-              <h2 id="selectCategory">Dessert</h2>
+              <h2 id="dessert-anchor">Dessert</h2>
               <section id="sectionDessert">
                 <div id="dishContent"></div>
               </section>
@@ -85,7 +87,7 @@
             <!-- Buttons  -->
             <div class="button-container">
               <!-- Delivery Section  -->
-              <div class="button-delivery">
+              <div class="button-delivery" onclick="addDeliveryCost()">
                 <div class="icon-button-delivery">
                   <img
                     class="icon"
@@ -99,7 +101,11 @@
                 </div>
               </div>
               <!-- PickUp Section  -->
-              <div class="button-pickUp">
+              <div
+                id="btnPickUp"
+                class="button-pickUp"
+                onclick="noDeliveryCost()"
+              >
                 <div class="icon-button-delivery">
                   <img
                     class="icon"
