@@ -29,6 +29,7 @@ function loadBody() {
     renderDessert();
     renderFood();
     renderPrice();
+    load();
 }
 
 function renderFood() {
@@ -81,19 +82,39 @@ function renderPrice() {
         <button id="btn-pay" class="btnPay" onclick="shipping()">Bezahlen</button>
         </div>
     `;
+
+       // Update button text with total amount
+       let toggleButton = document.getElementById('cartToggleButton');
+       if (toggleButton) {
+           toggleButton.innerText = `Warenkorb anzeigen (${total.toFixed(2)}€)`;
+       }
 }
+
+// Function after click on button "btnPay" to show an alert and clear container.
 
 function shipping() {
     alert("Ihre Bestellung wurde weitergeleitet. Klicken Sie auf 'OK' um die Bestellung zu bestätigen.")
 
+    
     let confirmation = document.getElementById('cartSection');
     confirmation.classList.add('d-flex');
 
-    let deleteContainer = document.getElementById('shoppingCart');
-    deleteContainer.classList.add('d-none')
+    let deleteContainer = document.getElementById('show-basket');
+    deleteContainer.classList.add('d-none');
 
+    deleteContainer.innerText = '';
+
+    foody = [];
+    prices = [];
+    amount = [];
+
+    save();
+    renderShoppingCart();
+    renderPrice();
 
 }
+
+// Add and remove delivery costs functions
 
 function noDeliveryCost() {
     deliveryCost = 0;
@@ -105,6 +126,8 @@ function addDeliveryCost() {
     renderPrice();
 }
 
+// Render Food functions
+
 function renderPizza() {
     let categoryPizza = document.getElementById('sectionPizza');
     categoryPizza.innerHTML = ''; 
@@ -113,19 +136,24 @@ function renderPizza() {
 
     for (let i = 0; i < pizzas.length; i++) {
         let pizza = pizzas[i];
-        categoryPizza.innerHTML += `
-        <div class="content-shoppingCart" id="shoppingDish">
-            <div class="ingredients-container">
-                <h3 id="pizzaName${i}">${pizza['name']}</h3>
-                <p>${pizza['ingredients']}</p>
-                <h3 id="pizzaPrice${i}">${pizza['price'].toFixed(2)}€</h3>
-            </div>
-            <div class="add-container">
-                <img src="./img/icons/plus.svg" alt="Add Button" onclick="addToDish('pizza', ${i})" class="addBtn" id="addButton">
-            </div>
-        </div>
-        `;
+        categoryPizza.innerHTML += pizzaTemplate(pizza, i);
     }
+}
+
+
+function pizzaTemplate(pizza, i) {
+    return `
+    <div class="content-shoppingCart" id="shoppingDish">
+    <div class="ingredients-container">
+        <h3 id="pizzaName${i}">${pizza['name']}</h3>
+        <p>${pizza['ingredients']}</p>
+        <h3 id="pizzaPrice${i}">${pizza['price'].toFixed(2)}€</h3>
+    </div>
+    <div class="add-container">
+        <img src="./img/icons/plus.svg" alt="Add Button" onclick="addToDish('pizza', ${i})" class="addBtn" id="addButton">
+    </div>
+</div>
+    `;
 }
 
 function renderPasta() {
@@ -136,19 +164,23 @@ function renderPasta() {
 
     for (let i = 0; i < pastas.length; i++) {
         let pasta = pastas[i];
-        categoryPasta.innerHTML += `
-        <div class="content-shoppingCart">
-            <div class="ingredients-container">
-                <h3 id="pastaName${i}">${pasta['name']}</h3>
-                <p>${pasta['ingredients']}</p>
-                <h3 id="pastaPrice${i}">${pasta['price'].toFixed(2)}€</h3>
-            </div>
-            <div class="add-container">
-                <img src="./img/icons/plus.svg" alt="Add Button" onclick="addToDish('pasta', ${i})" class="addBtn">
-            </div>
-        </div>
-        `;
+        categoryPasta.innerHTML += pastaTemplate(pasta, i);
     }
+}
+
+function pastaTemplate(pasta, i) {
+    return `
+    <div class="content-shoppingCart">
+    <div class="ingredients-container">
+        <h3 id="pastaName${i}">${pasta['name']}</h3>
+        <p>${pasta['ingredients']}</p>
+        <h3 id="pastaPrice${i}">${pasta['price'].toFixed(2)}€</h3>
+    </div>
+    <div class="add-container">
+        <img src="./img/icons/plus.svg" alt="Add Button" onclick="addToDish('pasta', ${i})" class="addBtn">
+    </div>
+</div>
+    `;
 }
 
 function renderDessert() {
@@ -159,8 +191,13 @@ function renderDessert() {
 
     for (let i = 0; i < desserts.length; i++) {
         let dessert = desserts[i];
-        categoryDessert.innerHTML += `
-        <div class="content-shoppingCart">
+        categoryDessert.innerHTML += dessertTemplate(dessert, i);
+    }
+}
+
+function dessertTemplate(dessert, i) {
+    return `
+    <div class="content-shoppingCart">
             <div class="ingredients-container">
                 <h3 id="dessertName${i}">${dessert['name']}</h3>
                 <p>${dessert['ingredients']}</p>
@@ -170,8 +207,7 @@ function renderDessert() {
                 <img src="./img/icons/plus.svg" alt="Add Button" onclick="addToDish('dessert', ${i})" class="addBtn">
             </div>
         </div>
-        `;
-    }
+    `;
 }
 
 function renderShoppingCart() {
@@ -187,7 +223,7 @@ function cartTemplate() {
         <h3>Fülle deinen Warenkorb</h3>
         <p class="descriptionCart">Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p>
     </div>
-    <div id="show-basket">
+    <div class="showBasket" id="show-basket">
     <div id="filledBasket" class="filled-basket"></div>
     <div id="calculation-container"></div>
     </div>
@@ -206,6 +242,12 @@ function choice() {
 }
 
 function addToDish(category, index) {
+    let showBasketContainer = document.getElementById('show-basket');
+    showBasketContainer.classList.add('d-flex');
+
+    let hideShoppingCartContainer = document.getElementById('cartSection');
+    hideShoppingCartContainer.classList.add('d-none');
+
     choice();
     let selectedDish = dish[category][index];
     let dishName = selectedDish.name;
@@ -235,7 +277,7 @@ function decreaseAmount(index) {
     if (amount[index] > 1) {
         amount[index] -= 1;
     } else {
-        // Remove item if amount is 1
+        
         foody.splice(index, 1);
         prices.splice(index, 1);
         amount.splice(index, 1);
@@ -243,3 +285,55 @@ function decreaseAmount(index) {
     renderFood();
     renderPrice();
 }
+
+// Converts arrays to text and save them to localStorage
+function save() {
+    let foodyAsText = JSON.stringify(foody);
+    localStorage.setItem('foodys', foodyAsText);
+    let pricesAsText = JSON.stringify(prices);
+    localStorage.setItem('price', pricesAsText);
+    let amountAsText = JSON.stringify(amount);
+    localStorage.setItem('amounts', amountAsText);
+
+}
+
+// Load localStorage to parse them in foody, prices and amount array
+function load() {
+    let foodyAsText = localStorage.getItem('foodys');
+    let pricesAsText = localStorage.getItem('price');
+    let amountAsText = localStorage.getItem('amounts');
+
+    if(foodyAsText && priceAsText && amountAsText) {
+        foody =  JSON.parse(foodyAsText);
+        prices = JSON.parse(pricesAsText);
+        amount = JSON.parse(amountAsText);
+    }
+
+
+}
+
+
+// Render Responsive Cart 
+
+function toggleCart() {
+    let cartWrapper = document.querySelector('.cart-wrapper');
+    let toggleButton = document.getElementById('cartToggleButton');
+    cartWrapper.classList.toggle('open');
+
+    if (cartWrapper.classList.contains('open')) {
+        toggleButton.innerText = `Warenkorb verbergen (${calculateTotal().toFixed(2)}€)`;
+    } else {
+        toggleButton.innerText = `Warenkorb anzeigen (${calculateTotal().toFixed(2)}€)`;
+    }
+}
+
+function calculateTotal() {
+    let subtotal = 0;
+    for (let i = 0; i < prices.length; i++) {
+        subtotal += prices[i] * amount[i];
+    }
+    let total = subtotal + deliveryCost;
+    return total;
+}
+
+
